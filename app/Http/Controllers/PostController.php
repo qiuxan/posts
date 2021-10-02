@@ -1,16 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Events\NewComment;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
     public function store(){
-
-
-//        return request();
-
 
         $attribute= request()->validate(
             ['body'=>'required'],
@@ -19,10 +16,9 @@ class PostController extends Controller
             ]);
 
 
+        $newPost=Post::create($attribute);
 
-//        return $attribute;
-
-        Post::create($attribute);
+        NewComment::dispatch($newPost);
 
         return back();
 

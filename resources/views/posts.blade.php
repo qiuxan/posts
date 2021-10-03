@@ -19,7 +19,15 @@
     {{--</div>--}}
 
     <div id="root">
-      @{{comment}}
+      {{--@{{comment}}--}}
+
+        <div v-for="comment in comments" >
+            <p v-text="comment.body"></p>
+            <p v-text="comment.created_at"></p>
+            <p>-----------------</p>
+        </div>
+        {{--<p v-for="comment in comments" v-text="comment.created_at"></p>--}}
+
     </div>
 
 

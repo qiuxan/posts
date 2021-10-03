@@ -30,7 +30,13 @@ import App from './view/app'
 var app=new Vue({
     el:'#root',
     data:{
-        comment: ''
+        comments: [
+            // {body:"fake comment 1", created_at:"2021-10-03T03:49:32.000000Z","id": 27,updated_at: "2021-10-03T03:49:32.000000Z"},
+            // {body:"fake comment 2", created_at:"2021-10-03T03:44:32.000000Z","id": 27,updated_at: "2021-10-03T03:49:32.000000Z"},
+            // {body:"fake comment 3", created_at:"2021-10-03T03:43:32.000000Z","id": 27,updated_at: "2021-10-03T03:49:32.000000Z"},
+            // {body:"fake comment 4", created_at:"2021-10-03T03:33:32.000000Z","id": 27,updated_at: "2021-10-03T03:49:32.000000Z"},
+            // {body:"fake comment 5", created_at:"2021-10-03T03:11:32.000000Z","id": 27,updated_at: "2021-10-03T03:49:32.000000Z"}
+        ]
     },
 
 });
@@ -52,6 +58,27 @@ var app=new Vue({
 // });
 
 
+// let  commentsTest= [
+//     {body:"fake comment 1", created_at:"2021-10-03T03:49:32.000000Z","id": 27,updated_at: "2021-10-03T03:49:32.000000Z"},
+//     {body:"fake comment 2", created_at:"2021-10-03T03:44:32.000000Z","id": 27,updated_at: "2021-10-03T03:49:32.000000Z"},
+//     {body:"fake comment 3", created_at:"2021-10-03T03:43:32.000000Z","id": 27,updated_at: "2021-10-03T03:49:32.000000Z"},
+//     {body:"fake comment 4", created_at:"2021-10-03T03:33:32.000000Z","id": 27,updated_at: "2021-10-03T03:49:32.000000Z"},
+//     {body:"fake comment 5", created_at:"2021-10-03T03:11:32.000000Z","id": 27,updated_at: "2021-10-03T03:49:32.000000Z"}
+//     ];
+//
+// let addTest1={
+//     id: 27,
+//     body: "dadfasdfsa",
+//     created_at: "2021-10-03T03:49:32.000000Z",
+//     updated_at: "2021-10-03T03:49:32.000000Z"
+// }
+//
+// commentsTest=[addTest1,...commentsTest];
+//
+// console.log(commentsTest);
+
+
+
 
 import Echo from 'laravel-echo';
 
@@ -67,12 +94,12 @@ window.Echo = new Echo({
 window.Echo.channel('comment')
     .listen('NewComment',e=>{
         console.log('comment added');
-        console.log(e.newPost.body);
-
-        app.comment=e.newPost.body;
-
-
-
+        // console.log(e.newPost);
+        // console.log(app.comments);
+        app.comments=[e.newPost,...app.comments];
+        // console.log(app.comments);
+        // console.log(app.comments);
+        // app.comment=e.newPost.body;
 
 });
 

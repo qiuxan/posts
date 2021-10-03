@@ -2103,6 +2103,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
 /* harmony import */ var _view_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./view/app */ "./resources/js/view/app.vue");
 /* harmony import */ var laravel_echo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! laravel-echo */ "./node_modules/laravel-echo/dist/echo.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -2129,7 +2141,12 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 var app = new vue__WEBPACK_IMPORTED_MODULE_1__["default"]({
   el: '#root',
   data: {
-    comment: ''
+    comments: [// {body:"fake comment 1", created_at:"2021-10-03T03:49:32.000000Z","id": 27,updated_at: "2021-10-03T03:49:32.000000Z"},
+      // {body:"fake comment 2", created_at:"2021-10-03T03:44:32.000000Z","id": 27,updated_at: "2021-10-03T03:49:32.000000Z"},
+      // {body:"fake comment 3", created_at:"2021-10-03T03:43:32.000000Z","id": 27,updated_at: "2021-10-03T03:49:32.000000Z"},
+      // {body:"fake comment 4", created_at:"2021-10-03T03:33:32.000000Z","id": 27,updated_at: "2021-10-03T03:49:32.000000Z"},
+      // {body:"fake comment 5", created_at:"2021-10-03T03:11:32.000000Z","id": 27,updated_at: "2021-10-03T03:49:32.000000Z"}
+    ]
   }
 }); // var app=new Vue({
 //     el:'#root',
@@ -2144,6 +2161,24 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_1__["default"]({
 //     }
 //
 // });
+// let  commentsTest= [
+//     {body:"fake comment 1", created_at:"2021-10-03T03:49:32.000000Z","id": 27,updated_at: "2021-10-03T03:49:32.000000Z"},
+//     {body:"fake comment 2", created_at:"2021-10-03T03:44:32.000000Z","id": 27,updated_at: "2021-10-03T03:49:32.000000Z"},
+//     {body:"fake comment 3", created_at:"2021-10-03T03:43:32.000000Z","id": 27,updated_at: "2021-10-03T03:49:32.000000Z"},
+//     {body:"fake comment 4", created_at:"2021-10-03T03:33:32.000000Z","id": 27,updated_at: "2021-10-03T03:49:32.000000Z"},
+//     {body:"fake comment 5", created_at:"2021-10-03T03:11:32.000000Z","id": 27,updated_at: "2021-10-03T03:49:32.000000Z"}
+//     ];
+//
+// let addTest1={
+//     id: 27,
+//     body: "dadfasdfsa",
+//     created_at: "2021-10-03T03:49:32.000000Z",
+//     updated_at: "2021-10-03T03:49:32.000000Z"
+// }
+//
+// commentsTest=[addTest1,...commentsTest];
+//
+// console.log(commentsTest);
 
 
 window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
@@ -2154,9 +2189,12 @@ window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_2__["default"]({
   forceTLS: true
 });
 window.Echo.channel('comment').listen('NewComment', function (e) {
-  console.log('comment added');
-  console.log(e.newPost.body);
-  app.comment = e.newPost.body;
+  console.log('comment added'); // console.log(e.newPost);
+  // console.log(app.comments);
+
+  app.comments = [e.newPost].concat(_toConsumableArray(app.comments)); // console.log(app.comments);
+  // console.log(app.comments);
+  // app.comment=e.newPost.body;
 });
 
 /***/ }),

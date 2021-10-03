@@ -1,8 +1,4 @@
 <x-layout>
-
-
-
-
     <form action="/new-post" method="POST">
         <x-textarea/>
         @csrf
@@ -14,10 +10,6 @@
     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
     @enderror
 
-    {{--<div id="app">--}}
-        {{--<app></app>--}}
-    {{--</div>--}}
-
     <div id="root">
       {{--@{{comment}}--}}
 
@@ -26,8 +18,6 @@
             <p v-text="comment.created_at"></p>
             <p>-----------------</p>
         </div>
-        {{--<p v-for="comment in comments" v-text="comment.created_at"></p>--}}
-
     </div>
 
 
@@ -38,8 +28,6 @@
     @endforeach
 
     <x-comment/>
-
-
 
 </x-layout>
 

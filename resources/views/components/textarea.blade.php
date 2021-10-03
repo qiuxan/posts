@@ -1,11 +1,9 @@
-<div class="mb-6">
-    <label for="comment"
-           class="block mb-2 uppercase font-bold text-xs text-gray-700">Comment</label>
+<div class="form-group">
     <textarea
-            class="border border-gray-200 p2 w-full rounded"
+            placeholder="What's in your mind?"
+            class="form-control mt-3"
+            rows="3"
             name="body"
             id="comment"
-
     ></textarea>
-
 </div>

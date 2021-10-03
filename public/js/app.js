@@ -2118,9 +2118,9 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0__["default"]({
 var getTimeFormat = function getTimeFormat(time) {
   return time.toLocaleDateString('au-EN', {
     year: 'numeric',
-    month: 'short',
+    month: 'long',
     day: '2-digit'
-  }) + ' at ' + time.getHours() + ' : ' + time.getMinutes();
+  }) + ' at ' + (time.getHours() < 10 ? '0' : '') + time.getHours() + ' : ' + (time.getMinutes() < 10 ? '0' : '') + time.getMinutes();
 };
 /**
  *

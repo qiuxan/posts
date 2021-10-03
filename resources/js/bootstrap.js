@@ -31,8 +31,8 @@ var app=new Vue({
 });
 
 const getTimeFormat=time=>
-    time.toLocaleDateString('au-EN',{  year: 'numeric', month: 'short', day: '2-digit' })
-    +' at ' +time.getHours() +' : '+ time.getMinutes();
+    time.toLocaleDateString('au-EN',{  year: 'numeric', month: 'long', day: '2-digit' })
+    +' at ' +(time.getHours()<10?'0':'')+time.getHours() +' : '+ (time.getMinutes()<10?'0':'')+time.getMinutes();
 
 /**
  *
@@ -55,4 +55,3 @@ window.Echo.channel('comment')
         e.newPost.created_at=getTimeFormat(new Date(e.newPost.created_at));
         app.comments=[e.newPost,...app.comments];
 });
-

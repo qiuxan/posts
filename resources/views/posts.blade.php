@@ -11,9 +11,6 @@
     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
     @enderror
 
-{{--{{dd($posts)}}--}}
-
-
     @foreach($posts as $post)
         <p>{{$post->body}}</p>
         <p>{{$post->created_at->format('d F Y')}} at {{$post->created_at->format('H : m')}}</p>

@@ -1,5 +1,8 @@
 <x-layout>
 
+
+
+
     <form action="/new-post" method="POST">
         <x-textarea/>
         @csrf
@@ -11,16 +14,20 @@
     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
     @enderror
 
-    <div id="app">
-        <app></app>
+    {{--<div id="app">--}}
+        {{--<app></app>--}}
+    {{--</div>--}}
+
+    <div id="root">
+      @{{comment}}
     </div>
+
 
     @foreach($posts as $post)
         <p>{{$post->body}}</p>
         <p>{{$post->created_at->format('d F Y')}} at {{$post->created_at->format('H : m')}}</p>
         <p>-----------------</p>
     @endforeach
-        Hello world
 
     <x-comment/>
 

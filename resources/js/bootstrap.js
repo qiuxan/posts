@@ -25,14 +25,31 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 import Vue from 'vue'
 
-//Main pages
 import App from './view/app'
 
+var app=new Vue({
+    el:'#root',
+    data:{
+        comment: ''
+    },
 
-const app = new Vue({
-    el: '#app',
-    components: { App }
 });
+
+
+
+// var app=new Vue({
+//     el:'#root',
+//     data:{
+//        comment: 'vue comment'
+//     },
+//
+//     computed:{
+//         reverseMessage(){
+//              return this.comment.split('').reverse().join('');
+//         }
+//     }
+//
+// });
 
 
 
@@ -50,6 +67,12 @@ window.Echo = new Echo({
 window.Echo.channel('comment')
     .listen('NewComment',e=>{
         console.log('comment added');
-        console.log(e);
+        console.log(e.newPost.body);
+
+        app.comment=e.newPost.body;
+
+
+
+
 });
 

@@ -2124,15 +2124,27 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 *
 */
 
- //Main pages
 
 
 var app = new vue__WEBPACK_IMPORTED_MODULE_1__["default"]({
-  el: '#app',
-  components: {
-    App: _view_app__WEBPACK_IMPORTED_MODULE_0__["default"]
+  el: '#root',
+  data: {
+    comment: ''
   }
-});
+}); // var app=new Vue({
+//     el:'#root',
+//     data:{
+//        comment: 'vue comment'
+//     },
+//
+//     computed:{
+//         reverseMessage(){
+//              return this.comment.split('').reverse().join('');
+//         }
+//     }
+//
+// });
+
 
 window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_2__["default"]({
@@ -2143,7 +2155,8 @@ window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_2__["default"]({
 });
 window.Echo.channel('comment').listen('NewComment', function (e) {
   console.log('comment added');
-  console.log(e);
+  console.log(e.newPost.body);
+  app.comment = e.newPost.body;
 });
 
 /***/ }),

@@ -11,3 +11,4 @@ After installing all the dependency, run "php artisan migrate --seed" in the ter
 
 After migrate the database, user can enter "php artisan serve" to check the application.
 
+In .env file BROADCAST_DRIVER=log should be change to pusher:BROADCAST_DRIVER=pusher

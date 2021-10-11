@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use \App\Http\Controllers\PostController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,4 @@ Route::get('/', [PostController::class, 'index']);
 Route::post('/new-post', [PostController::class, 'store']);
 
 
+Route::get('/api/comments', [CommentController::class, 'index']);
